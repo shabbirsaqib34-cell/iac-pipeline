@@ -26,7 +26,7 @@ resource "azurerm_resource_group" "main" {
 
 module "network" {
   source              = "./modules/network"
-  name_prefix = local.name_prefix
+  name_prefix         = local.name_prefix
   location            = var.location
   resource_group_name = azurerm_resource_group.main.name
 }
