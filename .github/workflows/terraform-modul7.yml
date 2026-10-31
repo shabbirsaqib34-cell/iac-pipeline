@@ -45,7 +45,6 @@ jobs:
     needs: build
     if: github.event_name == 'pull_request'
     runs-on: ubuntu-latest
-    environment: dev
     steps:
       - uses: actions/checkout@v4
       - uses: Azure/login@v3.1.0
@@ -60,7 +59,6 @@ jobs:
             -backend-config="key=modul7/dev/network.tfstate"
       - run: terraform plan -var-file="dev.tfvars" -no-color
 
-      
   apply-dev:
     needs: build
     if: github.event_name == 'push'
@@ -79,7 +77,6 @@ jobs:
             -backend-config=backend.hcl \
             -backend-config="key=modul7/dev/network.tfstate"
       - run: terraform apply -auto-approve -var-file="dev.tfvars"
-
 
   apply-prod:
     needs: apply-dev
