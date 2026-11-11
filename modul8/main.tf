@@ -26,7 +26,7 @@ resource "azurerm_resource_group" "main" {
 }
 
 module "network" {
-  source              = "./modules/network"
+  source              = "git::https://github.com/shabbirsaqib34-cell/iac-pipeline.git//modules/network?ref=network-v1.1.0"
   name_prefix         = local.name_prefix
   location            = var.location
   resource_group_name = azurerm_resource_group.main.name
